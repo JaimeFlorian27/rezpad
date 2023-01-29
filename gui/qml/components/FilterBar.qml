@@ -20,7 +20,7 @@ Rectangle{
             id: row
             width: 200
             height: 400
-            Layout.fillWidth: false
+            Layout.fillWidth: true
             Layout.fillHeight: true
             spacing: 8
 
@@ -41,6 +41,7 @@ Rectangle{
                 id: textEdit
                 width: 200
                 text: qsTr("")
+                Layout.fillWidth: true
                 font.family: "Arial"
                 placeholderText: "Search..."
                 antialiasing: true
@@ -62,23 +63,8 @@ Rectangle{
         }
     }
 
-    TextInput {
-        id: textInput
-        x: 292
-        y: 16
-        width: 80
-        height: 20
-        color: "#ffffff"
-        text: qsTr("Text Input")
-        font.pixelSize: 12
-    }
-
 
 }
 
 
-/*##^##
-Designer {
-    D{i:0;formeditorZoom:1.5}D{i:1}
-}
-##^##*/
+
