@@ -15,22 +15,21 @@ Rectangle {
     ColumnLayout {
         id: columnLayout
         anchors.fill:parent
+        anchors.topMargin: 16
         spacing: 16
         anchors.rightMargin: 16
         anchors.leftMargin: 16
         anchors.bottomMargin: 16
 
-        Rectangle {
-            id: menuPlaceholder
-            width: 112
-            height: 41
-            color: "#ffffff"
-            radius: 10
-            border.width: 0
-            Layout.fillWidth: false
-            Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-        }
 
+        Text {
+            id: text1
+            color: "#ffffff"
+            text: qsTr("Apps")
+            font.pixelSize: 18
+            horizontalAlignment: Text.AlignHCenter
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+        }
         Rectangle {
             id: frame
             Layout.fillHeight: true
@@ -74,6 +73,6 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75}
+    D{i:0;formeditorZoom:1.66}
 }
 ##^##*/

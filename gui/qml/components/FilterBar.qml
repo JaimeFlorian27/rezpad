@@ -3,7 +3,7 @@ import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 
 Rectangle{
-    height: 52
+    height: 40
     color: "#171717"
     radius: height/2
     border.width: 0
@@ -12,8 +12,8 @@ Rectangle{
         id: rowLayout
         anchors.fill: parent
         anchors.rightMargin: 16
-        anchors.bottomMargin: 8
-        anchors.topMargin: 8
+        anchors.bottomMargin: 4
+        anchors.topMargin: 4
         anchors.leftMargin: 16
 
         RowLayout {
@@ -24,12 +24,25 @@ Rectangle{
             Layout.fillHeight: true
             spacing: 8
 
+            Image {
+                id: image
+                width: 20
+                height: 20
+                source: "../../resources/search.svg"
+                sourceSize.height: width
+                sourceSize.width: height
+                mipmap: false
+                smooth: false
+                antialiasing: false
+                fillMode: Image.PreserveAspectFit
+            }
+
             TextField {
                 id: textEdit
                 width: 200
-                height: 32
-                text: qsTr("Text Edit")
-                renderType: Text.QtRendering
+                text: qsTr("")
+                font.family: "Arial"
+                placeholderText: "Search..."
                 antialiasing: true
                 Layout.maximumWidth: 200
                 Layout.preferredWidth: 200
@@ -49,12 +62,23 @@ Rectangle{
         }
     }
 
+    TextInput {
+        id: textInput
+        x: 292
+        y: 16
+        width: 80
+        height: 20
+        color: "#ffffff"
+        text: qsTr("Text Input")
+        font.pixelSize: 12
+    }
+
 
 }
 
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:3}D{i:1}
+    D{i:0;formeditorZoom:1.5}D{i:1}
 }
 ##^##*/
