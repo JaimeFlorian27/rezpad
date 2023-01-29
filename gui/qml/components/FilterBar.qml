@@ -2,11 +2,34 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 
-Rectangle{
+Item{
     height: 40
+    width: 640
+    states: [
+
+        State{
+            name: "hidden"
+            PropertyChanges {target: filterBar; opacity: 0}
+            PropertyChanges {target: filterBar; enabled: false}
+        }
+    ]
+
+    transitions: Transition {
+        reversible: true
+        from: "*"
+        to: "hidden"
+        PropertyAnimation{ target: filterBar ;property: "opacity" ; duration: 400;easing.bezierCurve: [0.609,0.00504,0.344,0.975,1,1]}
+        }
+
+Rectangle{
+    id: filterBar
+    anchors.fill:parent
     color: "#171717"
     radius: height/2
     border.width: 0
+
+
+
 
     RowLayout {
         id: rowLayout
@@ -65,6 +88,9 @@ Rectangle{
 
 
 }
-
-
-
+}
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:0.9}
+}
+##^##*/
