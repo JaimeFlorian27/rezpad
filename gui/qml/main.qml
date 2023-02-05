@@ -3,7 +3,7 @@ import QtQuick.Window 2.15
 import "appsScreen"
 
 Window {
-    width: 771
+    width: 784
     height: 451
     visible: true
     color: "#161616"

@@ -5,7 +5,8 @@ import QtGraphicalEffects 1.15
 import "../components"
 
 Page{
-    width: 771
+    id: root
+    width: 784
     height: 451
     Rectangle {
         id: rectangle
@@ -48,11 +49,9 @@ Page{
                     anchors.leftMargin: 16
 
                     Flickable {
-                        id: scrollView
-                        x: 0
-                        y: 0
+                        id: flickable
                         anchors.fill: parent
-                        contentHeight: height*2
+                        contentHeight: gridflow.childrenRect.height +56 > height ? gridflow.childrenRect.height + 56 : height
                         onContentYChanged: {
 
                             // I need to ignore the logic if there is vertical overshoot as the velocity get inversed when coming
@@ -61,228 +60,85 @@ Page{
                             verticalOvershoot == 0 ? (verticalVelocity > 0 ? filterBar.state = "hidden": filterBar.state = "") : true
                         }
                         ScrollBar.vertical: ScrollBar {
+                            x: 705
                             width: 8
-                            anchors.right: parent.right
-                            anchors.rightMargin: -8
                         }
 
-
-
                         Flow {
-                            id: gridLayout
-                            height: 347
+                            id: gridflow
                             anchors.left: parent.left
                             anchors.right: parent.right
                             anchors.top: parent.top
-                            spacing: 18
-                            anchors.rightMargin: 0
-                            layoutDirection: Qt.LeftToRight
+                            anchors.bottom: parent.bottom
+                            topPadding: filterBar.height + 16
+                            flow: Flow.LeftToRight
+                            rightPadding: 16
+                            leftPadding: 16
+                            //anchors.fill: parent
+                            spacing: 74
 
-                            Rectangle {
-                                id: rectangle1
-                                width: 160
-                                height: 160
-                                color: "#00ffffff"
-                                Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-                                Rectangle{
-                                    id : testbg
-                                    anchors.fill : parent
-                                    color: "#1b1b1b"
-                                    radius: 8
-                                }
-                                DropShadow {
-                                    anchors.fill: parent
-                                    horizontalOffset: 0
-                                    verticalOffset: 3
-                                    radius: 8.0
-                                    samples: 16
-                                    color: "#40000000"
-                                    source: testbg
-                                    cached: true
+                            SequentialAnimation{
+                                running: true
+
+                                PropertyAction{target: flickable; property: "enabled"; value: false}
+                                PropertyAction{target: gridflow; property: "opacity"; value: 0.0}
+
+                                PauseAnimation {duration: 700}
+
+                                PropertyAction{target: flickable; property: "enabled"; value: true}
+                                ParallelAnimation{
+                                    PropertyAnimation{target: gridflow; duration:800; property:"opacity"; easing.bezierCurve: [0.00722,0.0364,0.483,1.03,1,1]; to: 1}
                                 }
                             }
+                            move:Transition{
+                                SequentialAnimation{
+                                    PropertyAnimation { easing.bezierCurve: [0.623,0.0329,0.221,1,1,1];properties: "x,y"; duration :400;}
+                                }
+                            }
+                                    Repeater{
+                                    model:26
+                                    delegate:
+                                  Rectangle {
+                                    id: rectangle1
+                                    width: 160
+                                    height: 160
+                                    color: "#00000000"
 
-                            Rectangle {
-                                id: rectangle2
-                                width: 160
-                                height: 160
-                                color: "#00ffffff"
-                                Rectangle {
-                                    id: testbg1
-                                    color: "#1b1b1b"
-                                    radius: 8
-                                    anchors.fill: parent
+                                    Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+
+                                    Rectangle{
+                                        anchors.fill : parent
+                                        id: testbg
+                                        color: "#2b2b2b"
+                                        radius: 8
+                                    }
+                                    DropShadow {
+                                        anchors.fill: parent
+                                        horizontalOffset: 0
+                                        verticalOffset: 3
+                                        radius: 8.0
+                                        samples: 16
+                                        color: "#40000000"
+                                        source: testbg
+                                        cached: true
+                                    }
                                 }
 
-                                DropShadow {
-                                    color: "#40000000"
-                                    radius: 8
-                                    anchors.fill: parent
-                                    source: testbg1
-                                    horizontalOffset: 0
-                                    cached: true
-                                    samples: 16
-                                    verticalOffset: 3
-                                }
-                                Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
                             }
 
-                            Rectangle {
-                                id: rectangle3
-                                width: 160
-                                height: 160
-                                color: "#00ffffff"
-                                Rectangle {
-                                    id: testbg2
-                                    color: "#1b1b1b"
-                                    radius: 8
-                                    anchors.fill: parent
-                                }
 
-                                DropShadow {
-                                    color: "#40000000"
-                                    radius: 8
-                                    anchors.fill: parent
-                                    source: testbg2
-                                    horizontalOffset: 0
-                                    cached: true
-                                    samples: 16
-                                    verticalOffset: 3
-                                }
-                                Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-                            }
 
-                            Rectangle {
-                                id: rectangle4
-                                width: 160
-                                height: 160
-                                color: "#00ffffff"
-                                Rectangle {
-                                    id: testbg3
-                                    color: "#1b1b1b"
-                                    radius: 8
-                                    anchors.fill: parent
-                                }
-
-                                DropShadow {
-                                    color: "#40000000"
-                                    radius: 8
-                                    anchors.fill: parent
-                                    source: testbg3
-                                    horizontalOffset: 0
-                                    cached: true
-                                    samples: 16
-                                    verticalOffset: 3
-                                }
-                                Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-                            }
-
-                            Rectangle {
-                                id: rectangle5
-                                width: 160
-                                height: 160
-                                color: "#00ffffff"
-                                Rectangle {
-                                    id: testbg4
-                                    color: "#1b1b1b"
-                                    radius: 8
-                                    anchors.fill: parent
-                                }
-
-                                DropShadow {
-                                    color: "#40000000"
-                                    radius: 8
-                                    anchors.fill: parent
-                                    source: testbg4
-                                    horizontalOffset: 0
-                                    cached: true
-                                    samples: 16
-                                    verticalOffset: 3
-                                }
-                                Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-                            }
-
-                            Rectangle {
-                                id: rectangle6
-                                width: 160
-                                height: 160
-                                color: "#00ffffff"
-                                Rectangle {
-                                    id: testbg5
-                                    color: "#1b1b1b"
-                                    radius: 8
-                                    anchors.fill: parent
-                                }
-
-                                DropShadow {
-                                    color: "#40000000"
-                                    radius: 8
-                                    anchors.fill: parent
-                                    source: testbg5
-                                    horizontalOffset: 0
-                                    cached: true
-                                    samples: 16
-                                    verticalOffset: 3
-                                }
-                                Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-                            }
-
-                            Rectangle {
-                                id: rectangle7
-                                width: 160
-                                height: 160
-                                color: "#00ffffff"
-                                Rectangle {
-                                    id: testbg6
-                                    color: "#1b1b1b"
-                                    radius: 8
-                                    anchors.fill: parent
-                                }
-
-                                DropShadow {
-                                    color: "#40000000"
-                                    radius: 8
-                                    anchors.fill: parent
-                                    source: testbg6
-                                    horizontalOffset: 0
-                                    cached: true
-                                    samples: 16
-                                    verticalOffset: 3
-                                }
-                                Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-                            }
-
-                            Rectangle {
-                                id: rectangle8
-                                width: 160
-                                height: 160
-                                color: "#00ffffff"
-                                Rectangle {
-                                    id: testbg7
-                                    color: "#1b1b1b"
-                                    radius: 8
-                                    anchors.fill: parent
-                                }
-
-                                DropShadow {
-                                    color: "#40000000"
-                                    radius: 8
-                                    anchors.fill: parent
-                                    source: testbg7
-                                    horizontalOffset: 0
-                                    cached: true
-                                    samples: 16
-                                    verticalOffset: 3
-                                }
-                                Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-                            }
                         }
 
 
+
+
                     }
+
                     FilterBar {
                         id: filterBar
-                        x: 8
+                        x: -16
+                        y: 0
                         anchors.left: parent.left
                         anchors.right: parent.right
                         anchors.rightMargin: 0
@@ -305,8 +161,12 @@ Page{
 
 
 
+
+
+
+
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75}D{i:5}
+    D{i:0;formeditorZoom:0.75}
 }
 ##^##*/

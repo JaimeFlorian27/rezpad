@@ -3,6 +3,7 @@ import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 
 Item{
+    id: filterBar
     height: 40
     width: 640
     states: [
@@ -10,6 +11,7 @@ Item{
         State{
             name: "hidden"
             PropertyChanges {target: filterBar; opacity: 0}
+            PropertyChanges {target: filterBar; y: -16}
             PropertyChanges {target: filterBar; enabled: false}
         }
     ]
@@ -18,11 +20,14 @@ Item{
         reversible: true
         from: "*"
         to: "hidden"
+        ParallelAnimation{
+        PropertyAnimation{ target: filterBar ;property: "y"; duration: 400;easing.bezierCurve: [0.609,0.00504,0.344,0.975,1,1]}
         PropertyAnimation{ target: filterBar ;property: "opacity" ; duration: 400;easing.bezierCurve: [0.609,0.00504,0.344,0.975,1,1]}
         }
+    }
 
 Rectangle{
-    id: filterBar
+
     anchors.fill:parent
     color: "#171717"
     radius: height/2
