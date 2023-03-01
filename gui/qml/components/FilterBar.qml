@@ -13,7 +13,7 @@ Item{
             PropertyChanges {target: filterBar; opacity: 0}
             PropertyChanges {target: filterBar; y: -16}
             PropertyChanges {target: filterBar; enabled: false}
-        }
+    }
     ]
 
     transitions: Transition {
@@ -67,7 +67,7 @@ Rectangle{
 
             TextField {
                 id: textEdit
-                width: 200
+                width: 50
                 text: qsTr("")
                 Layout.fillWidth: true
                 font.family: "Arial"
