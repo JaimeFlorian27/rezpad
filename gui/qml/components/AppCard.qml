@@ -1,39 +1,80 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.15
 Item {
-    id: item1
-
+    id: app_card
     width: 280
     height: 200
-
     states: [
+
         State {
-            name: "hovered"; when: mouseArea.containsMouse
-            PropertyChanges {
-                target: object
+           name: "pressed"; when: mouseArea.containsPress
+           PropertyChanges {target: app_card; scale: 1.05;}
+           PropertyChanges {target: gradient_rect; opacity: 0.2;}
 
-            }
-            },
+           },
          State {
-            name: "default"; when: !mouseArea.containsMouse
-            PropertyChanges {
-                target: object
+            name: "hovered"; when: mouseArea.containsMouse
+            PropertyChanges {target: app_card; scale: 1.1;}
+            PropertyChanges {target: gradient_rect; opacity: 0.3;}
 
             }
-            }
+
+
     ]
+
+
+        transitions: [
+            Transition {
+                from: "*"
+                to: "*"
+
+
+                NumberAnimation {
+                    target: app_card
+                    property: "scale"
+                    duration: 200
+                    easing.type: Easing.OutExpo
+                }
+
+
+                    NumberAnimation {
+                        target: gradient_rect
+                        property: "opacity"
+                        easing.bezierCurve: [0.0845,0.793,0.542,0.963,1,1]
+                        duration: 500
+                        //easing.type: Easing.OutExpo
+                    }
+
+
+
+                  }
+
+
+        ]
+
+
     Rectangle{
         anchors.fill:parent
         color: "#1A1B24"
         radius: 16
-        border.color: "#232535"
+        border.color: "#232535"}
 
+    Rectangle{
+        id: gradient_rect
+        anchors.fill:parent
+        color: "#1A1B24"
+        radius: 16
+        border.color: "#232535"
+        opacity:0.05
         gradient: Gradient{
 
-            GradientStop { position: 1; color: "#12e87500" }
-            GradientStop { position: 0; color: "#00ff0000" }
+            stops:[
+            GradientStop { position: 1; color: "#e87500" },
+                GradientStop { position: 0; color: "#00000000" }
+            ]
         }
     }
+
 
     Column {
         id: columnLayout

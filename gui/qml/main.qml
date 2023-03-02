@@ -7,7 +7,7 @@ Window {
     height: 1024
     visible: true
     color: "#161616"
-    title: qsTr("Hello World")
+    title: qsTr("Hello Wampi")
 
     Apps{
     anchors.fill: parent

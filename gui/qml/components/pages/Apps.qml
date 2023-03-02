@@ -12,11 +12,6 @@ Page{
         anchors.fill: parent
         color: "#12131A"
 
-        AppCard {
-            id: appCard
-            x: 191
-            y: 168
-        }
 
         Text {
             id: text1
@@ -35,13 +30,25 @@ Page{
             text: qsTr("All Apps")
             font.pixelSize: 24
         }
+        Row{
+            x: 164
+            y: 125
+            spacing: 24
+        AppCard {
+            id: appCard
 
+        }
+        AppCard {
+            id: appCard1
+
+        }
+}
     }
 
 }
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75}D{i:4}
+    D{i:0;formeditorZoom:0.75}
 }
 ##^##*/
