@@ -15,8 +15,8 @@ Page{
 
         Text {
             id: text1
-            x: 68
-            y: 55
+            x: 164
+            y: 57
             color: "#dbdbf0"
             text: qsTr("Pinned Apps")
             font.pixelSize: 24
@@ -24,13 +24,14 @@ Page{
 
         Text {
             id: text2
-            x: 87
-            y: 446
+            x: 183
+            y: 448
             color: "#dbdbf0"
             text: qsTr("All Apps")
             font.pixelSize: 24
         }
         Row{
+            id: row
             x: 164
             y: 125
             spacing: 24
@@ -42,6 +43,7 @@ Page{
             id: appCard1
 
         }
+
 }
     }
 
@@ -49,6 +51,6 @@ Page{
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75}
+    D{i:0;formeditorZoom:0.66}
 }
 ##^##*/
