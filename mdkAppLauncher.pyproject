@@ -1,3 +1,3 @@
 {
-    "files": ["main.py", "main.qml"]
+    "files": ["gui/qml/main.qml","gui/qml/components/FilterBar.qml","gui/qml/appsScreen/Apps.qml","main.py","gui/qml/components/pages/Apps.qml","main.qml","gui/qml/components/AppCard.qml","gui/qml/components/NavBar.qml"]
 }
