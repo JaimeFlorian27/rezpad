@@ -1,7 +1,14 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.15
+import QtGraphicalEffects 1.15
 
     Button{
+
+        property color color
+        property color highlighted_color
+        property color pressed_color
+        property color disabled_color
+        property color icon_color
         id: nav_bar_button
         flat: true
         states:[
@@ -12,6 +19,10 @@ import QtQuick.Controls 2.15
                     target: bg
                     opacity: 1
                 }
+                PropertyChanges {
+                    target: icon
+                    scale: 1.1
+                }
             }
 
         ]
@@ -21,21 +32,29 @@ import QtQuick.Controls 2.15
                 from: "*"
                 to: "*"
                 PropertyAnimation{ target: bg ;property: "opacity" ; easing.bezierCurve: [0.0784,0.747,0.201,0.988,1,1];duration: 200 }
-                //PropertyAnimation{ target: tooltip ;properties: "opacity" ; easing.bezierCurve: [0.0763,0.209,0.306,0.937,1,1];duration: 400 }
-                //PropertyAnimation{ target: tooltip ;properties: "x" ; easing.bezierCurve: [0.00928,0.908,0.293,0.936,1,1];duration: 200 }
+                PropertyAnimation{ target: icon ;property: "scale" ; easing.bezierCurve: [0.27,0.559,0.327,0.828,1,1];duration: 2000 }
 
             }
         ]
+        FontLoader{
+            id: iconsFont
+            source: "../../resources/fonts/tabler-icons.ttf"
 
-
+        }
         anchors.horizontalCenter: parent.horizontalCenter
 
 
-        contentItem:             Image {
+        contentItem:             Text{
             id: icon
-            source: "../../resources/tabler-icon-rocket.svg"
-        }
+            color: "#5BDEC6"
+            text: qsTr("\uec45") //icon "rocket"
+            font.pixelSize: 40
+            anchors.centerIn: parent
+            font.family: "tabler-icons"
+            font.styleName: "Regular"
 
+
+        }
 
         background: Rectangle{
             id: bg
@@ -52,7 +71,7 @@ import QtQuick.Controls 2.15
             rightPadding: 8
             leftPadding: 8
             y : nav_bar_button.height/2 - height/2
-            x: 100
+            x: 70
 
 
             enter: Transition {
