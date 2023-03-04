@@ -8,6 +8,7 @@ import QtGraphicalEffects 1.15
         property color highlighted_color
         property color pressed_color
         property color disabled_color
+        property string icon_text : "\uec45" //icon "rocket"
         property color icon_color
         id: nav_bar_button
         flat: true
@@ -41,13 +42,14 @@ import QtGraphicalEffects 1.15
             source: "../../resources/fonts/tabler-icons.ttf"
 
         }
+
         anchors.horizontalCenter: parent.horizontalCenter
 
 
         contentItem:             Text{
             id: icon
             color: "#5BDEC6"
-            text: qsTr("\uec45") //icon "rocket"
+            text: nav_bar_button.icon_text
             font.pixelSize: 40
             anchors.centerIn: parent
             font.family: "tabler-icons"
