@@ -14,7 +14,7 @@ Window {
         id: row
     anchors.fill:parent
 
-    NavBar{
+    SideBar{
         id: nav_bar
         anchors.left: parent.left
         anchors.leftMargin: -width/2

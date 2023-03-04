@@ -23,7 +23,7 @@ Item {
         anchors.topMargin: 172
         anchors.rightMargin: 0
 
-        NavBarButton{
+        SideBarButton{
             anchors.horizontalCenter: column.horizontalCenter
         }
     }
