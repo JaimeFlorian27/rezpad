@@ -2,7 +2,7 @@ import QtQuick 2.0
 import QtQuick.Controls 2.15
 import "."
 Item {
-    id: nav_bar
+    id: side_bar
     width: 160
     height: 1024
 
@@ -16,8 +16,8 @@ Item {
 
     Column{
         id: column
-        width: nav_bar.width/2
-        height: nav_bar.height - anchors.topMargin
+        width: side_bar.width/2
+        height: side_bar.height - anchors.topMargin
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.topMargin: 172

@@ -13,15 +13,18 @@ Window {
     Row{
         id: row
     anchors.fill:parent
+    clip: true
 
     SideBar{
-        id: nav_bar
+        id: side_bar
         anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
         anchors.leftMargin: -width/2
     }
     Apps{
         anchors.left: parent.left
-        anchors.leftMargin: nav_bar.width/2
+        anchors.leftMargin: side_bar.width/2
     }
 
 
@@ -31,6 +34,6 @@ Window {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}D{i:2}
+    D{i:0;formeditorZoom:0.66}
 }
 ##^##*/

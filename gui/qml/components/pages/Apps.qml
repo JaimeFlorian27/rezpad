@@ -12,14 +12,24 @@ Page{
         anchors.fill: parent
         color: "#12131A"
 
-
-        Text {
-            id: text1
+        Row{
             x: 164
-            y: 57
-            color: "#dbdbf0"
-            text: qsTr("Pinned Apps")
-            font.pixelSize: 24
+            y: 66
+            spacing: 8
+            Text {
+                anchors.verticalCenter: parent.verticalCenter
+                id: pinned_apps_icon
+                color: "#dbdbf0"
+                text: qsTr("\uf68d")
+                font.pixelSize: 24
+                font.family: Fonts.fontTablerIcons.name
+            }
+            Text {
+                id: pinned_apps_text
+                color: "#dbdbf0"
+                text: qsTr("Pinned Apps")
+                font.pixelSize: 24
+            }
         }
 
         Text {
@@ -51,6 +61,6 @@ Page{
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}
+    D{i:0;formeditorZoom:1.25}
 }
 ##^##*/

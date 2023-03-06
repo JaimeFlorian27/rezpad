@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.15
 import QtGraphicalEffects 1.15
-
+import "."
     Button{
 
         property color color
@@ -37,11 +37,6 @@ import QtGraphicalEffects 1.15
 
             }
         ]
-        FontLoader{
-            id: iconsFont
-            source: "../../resources/fonts/tabler-icons.ttf"
-
-        }
 
         anchors.horizontalCenter: parent.horizontalCenter
 
@@ -52,7 +47,7 @@ import QtGraphicalEffects 1.15
             text: nav_bar_button.icon_text
             font.pixelSize: 40
             anchors.centerIn: parent
-            font.family: "tabler-icons"
+            font.family: Fonts.fontTablerIcons.name
             font.styleName: "Regular"
 
 
