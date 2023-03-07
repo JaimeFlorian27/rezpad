@@ -8,11 +8,12 @@ Window {
     height: 1024
     visible: true
     color: "#12131A"
-    title: qsTr("Hello Wampi")
+    title: qsTr("mdkAppLauncher")
 
     Row{
         id: row
-    anchors.fill:parent
+    width: parent.width
+    height: parent.height
     clip: true
 
     SideBar{

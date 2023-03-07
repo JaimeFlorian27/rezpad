@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.15
 import "."
+import "../style"
 Item {
     id: side_bar
     width: 160
@@ -20,11 +21,25 @@ Item {
         height: side_bar.height - anchors.topMargin
         anchors.right: parent.right
         anchors.top: parent.top
+        spacing: 20
         anchors.topMargin: 172
         anchors.rightMargin: 0
 
         SideBarButton{
             anchors.horizontalCenter: column.horizontalCenter
+            color: Style.side_bar_icon_highlighted_color
+        }
+
+        SideBarButton{
+            anchors.horizontalCenter: column.horizontalCenter
+            icon_text: "\uf561" // box-seam icon
+            tooltip_text: "Packages"
+        }
+
+        SideBarButton{
+            anchors.horizontalCenter: column.horizontalCenter
+            icon_text: "\uf2c9" // packages icon
+            tooltip_text: "Suites"
         }
     }
 
