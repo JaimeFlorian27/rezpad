@@ -23,7 +23,7 @@ Item {
         width: side_bar.width/2
         height: side_bar.height - anchors.topMargin
         anchors.horizontalCenter: side_bar.horizontalCenter
-        anchors.top: parent.top
+        anchors.top: side_bar.top
         spacing: 20
         anchors.topMargin: 172
         anchors.rightMargin: 0

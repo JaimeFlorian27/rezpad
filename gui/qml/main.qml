@@ -11,21 +11,21 @@ Window {
     color: Style.bg_color
     title: qsTr("mdkAppLauncher")
 
-    Row{
-        id: row
-    width: parent.width
-    height: parent.height
-    clip: false
+
+    Apps{
+        anchors.fill:parent
+        id: apps_screen
+        anchors.leftMargin: side_bar.width
+    }
 
     SideBar{
         id: side_bar
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+
     }
-    Apps{
-    }
 
 
-
-}
 }
 
 /*##^##
