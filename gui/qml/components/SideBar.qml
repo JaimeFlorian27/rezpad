@@ -4,22 +4,25 @@ import "."
 import "../style"
 Item {
     id: side_bar
-    width: 160
+    width: 80
     height: 1024
+    clip: true
 
     Rectangle{
-        id: rectangle
-    anchors.fill: parent
+        id: bg
     color: "#15171F"
     radius: 24
     border.color: "#232535"
     border.width: 1
+    anchors.fill: parent
+    anchors.leftMargin: -80
+    }
 
     Column{
         id: column
         width: side_bar.width/2
         height: side_bar.height - anchors.topMargin
-        anchors.right: parent.right
+        anchors.horizontalCenter: side_bar.horizontalCenter
         anchors.top: parent.top
         spacing: 20
         anchors.topMargin: 172
@@ -41,13 +44,9 @@ Item {
             icon_text: "\uf2c9" // packages icon
             tooltip_text: "Suites"
         }
-    }
+
 
     }
 }
 
-/*##^##
-Designer {
-    D{i:0;formeditorZoom:1.1}
-}
-##^##*/
+

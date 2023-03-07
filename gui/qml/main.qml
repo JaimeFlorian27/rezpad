@@ -2,30 +2,25 @@ import QtQuick 2.15
 import QtQuick.Window 2.15
 import "components/pages"
 import "components"
+import "./style"
 
 Window {
     width: 1440
     height: 1024
     visible: true
-    color: "#12131A"
+    color: Style.bg_color
     title: qsTr("mdkAppLauncher")
 
     Row{
         id: row
     width: parent.width
     height: parent.height
-    clip: true
+    clip: false
 
     SideBar{
         id: side_bar
-        anchors.left: parent.left
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.leftMargin: -width/2
     }
     Apps{
-        anchors.left: parent.left
-        anchors.leftMargin: side_bar.width/2
     }
 
 
@@ -35,6 +30,6 @@ Window {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}
+    D{i:0;formeditorZoom:0.5}
 }
 ##^##*/
