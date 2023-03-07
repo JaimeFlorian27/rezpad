@@ -120,7 +120,7 @@ Page {
                         anchors.right: parent.right
                         anchors.rightMargin: 0
                         anchors.leftMargin: 0
-                        spacing: 34
+                        spacing: 32
                         Repeater {
                             id: all_apps_repeater
                             model: 50
@@ -136,6 +136,13 @@ Page {
             }
 
         }
+    }
+
+    ProductionBar{
+
+        y : 36
+        anchors.horizontalCenter: parent.horizontalCenter
+
     }
     }
 
