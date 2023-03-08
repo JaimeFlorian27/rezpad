@@ -21,7 +21,10 @@ Page {
         anchors.rightMargin: 0
         anchors.leftMargin: 0
         flickableDirection: Flickable.VerticalFlick
+        onContentYChanged: {
 
+         flickable.verticalOvershoot != 0 ? true : flickable.verticalVelocity >0 ? production_bar.state = "hidden" : production_bar.state ="default"
+        }
 
     ColumnLayout {
         id: main_column
@@ -94,8 +97,8 @@ Page {
                     Text {
                         id: all_apps_icon
                         anchors.verticalCenter: parent.verticalCenter
-                        color: Style.green
-                        text: qsTr("\uf68d") //pin icon
+                        color: "#5721C9"
+                        text: qsTr("\uf1f5") //category-2 icon
                         font.pixelSize: 24
                         font.family: Style.iconFonts
                     }
@@ -139,7 +142,7 @@ Page {
     }
 
     ProductionBar{
-
+        id: production_bar
         y : 36
         anchors.horizontalCenter: parent.horizontalCenter
 

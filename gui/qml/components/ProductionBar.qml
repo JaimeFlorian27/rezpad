@@ -11,6 +11,32 @@ Button {
    states:
     [
 
+      State {
+         name: "hidden"
+         PropertyChanges {target: production_bar; opacity: 0.0; y : 28; enabled : false}
+      },
+              State{
+               name:"pressed"
+               when: production_bar.pressed
+               PropertyChanges {
+                   target: production_bar
+                   scale: 0.95
+               }
+               PropertyChanges {
+                   target: bg_gradient
+                   opacity: 0.30
+               }
+               PropertyChanges {
+                   target: shadow
+                   radius: 4.0
+                   verticalOffset: 1
+               }
+               PropertyChanges {
+                   target: chevron_transform
+                   y:5
+               }
+              },
+
        State{
         name:"hovered"
         when: production_bar.hovered
@@ -38,7 +64,7 @@ Button {
         Transition{
             from: "*"
             to: "*"
-
+            reversible: true
             PropertyAnimation{
                 targets: [bg_gradient, production_bar, chevron_transform, shadow]
                 properties: "opacity, scale, y, verticalOffset, radius"
@@ -49,9 +75,23 @@ Button {
                 target: chevron_transform
                 property: "y"
                 easing.bezierCurve: [0.149,0.786,0.567,0.93,1,1]
-                duration: 2000
+                duration: 200
             }
             }
+//       Transition{
+//           from: "*"
+//           to: "hidden"
+//           reversible: true
+//           SequentialAnimation{
+
+//           PropertyAnimation{
+//               target: production_bar
+//               property: "opacity"
+//               easing.bezierCurve: [0.149,0.786,0.567,0.93,1,1]
+//               duration: 3000
+//           }
+//           }
+//        }
 ]
 
 
@@ -121,7 +161,8 @@ Button {
             id: chevron_icon
             text: qsTr("\uea5f")
             anchors.verticalCenter: parent.verticalCenter //chevron-down icon
-            font.pixelSize: 20
+            font.pixelSize: 16
+            scale: 1.3
 
             font.family: Style.iconFonts
             color: Style.text_color
