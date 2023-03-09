@@ -56,7 +56,19 @@ Item {
      anchors.fill:parent
      color: "#1A1B24"
      radius: 16
-     border.color: "#232535"}
+     border.color: "#232535"
+     Image {
+         anchors.fill: parent
+         id: bg_image
+         opacity: 0.02
+         sourceSize.height: parent.height
+         sourceSize.width: parent.width
+     source: "../../resources/blender_logo.png"
+     antialiasing: true
+     fillMode: Image.PreserveAspectFit
+     asynchronous: true
+     }
+ }
 
  Rectangle{
      id: gradient_rect
@@ -78,13 +90,22 @@ Item {
  Column {
      id: columnLayout
      anchors.centerIn: parent
-
+     Row{
+         id: row
+         spacing: 4
+         Image {
+             id: name
+             anchors.verticalCenter: parent.verticalCenter
+         source: "../../resources/blender_logo.png"
+         sourceSize.height: 40
+         sourceSize.width: 40
+         asynchronous: true
+     }
      Text {
          id: app_name
          color: "#dbdbf0"
          text: qsTr("Blender")
-         font.pixelSize: 40
-         anchors.horizontalCenter: parent.horizontalCenter
+         font.pixelSize: 40     }
      }
      Text {
          id: app_version
@@ -106,6 +127,6 @@ Item {
 
 /*##^##
 Designer {
- D{i:0;formeditorZoom:1.5}
+    D{i:0;formeditorZoom:1.66}
 }
 ##^##*/

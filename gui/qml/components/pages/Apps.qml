@@ -17,13 +17,15 @@ Page {
     Flickable{
         id: flickable
         anchors.fill: parent
+        maximumFlickVelocity: 3000
         contentHeight: contentItem.childrenRect.height + main_column.anchors.topMargin*2
         anchors.rightMargin: 0
         anchors.leftMargin: 0
         flickableDirection: Flickable.VerticalFlick
         onContentYChanged: {
 
-         flickable.verticalOvershoot != 0 ? true : flickable.verticalVelocity >0 ? production_bar.state = "hidden" : production_bar.state ="default"
+         //flickable.verticalOvershoot != 0 ? true : flickable.verticalVelocity >0 ?
+           //                                     (production_bar.state == "hidden" ? true : production_bar.state ="default") :true
         }
 
     ColumnLayout {
