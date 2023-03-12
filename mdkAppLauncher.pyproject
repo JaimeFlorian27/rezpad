@@ -1,3 +1,3 @@
 {
-    "files": ["gui/qml/main.qml","gui/qml/components/FilterBar.qml","gui/qml/appsScreen/Apps.qml","main.py","gui/qml/components/pages/Apps.qml","main.qml","gui/qml/components/AppCard.qml","gui/qml/components/NavBar.qml"]
+    "files": ["main.py","gui/qml/qmldir","gui/qml/components/AppCard.qml","gui/qml/style/Style.qml","gui/qml/main.qml","gui/qml/components/Fonts.qml","main.qml","gui/qml/components/pages/Apps.qml","gui/qml/components/SideBar.qml","gui/qml/appsScreen/Apps.qml","gui/qml/components/FilterBar.qml","gui/qml/style/qmldir","gui/qml/components/SideBarButton.qml","gui/qml/components/ProductionBar.qml"]
 }

@@ -3,49 +3,153 @@ import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
 import QtQuick.Window 2.15
 import "../"
-Page{
-    width: 1440
-    height: 1024
+import "../../style"
 
-    Rectangle{
+Page {
+    id: page
+    width: 1360
+    height: 1024
+    Rectangle {
         id: bg
         anchors.fill: parent
-        color: "#12131A"
+        color: Style.bg_color
+    }
+    Flickable{
+        id: flickable
+        anchors.fill: parent
+        maximumFlickVelocity: 3000
+        contentHeight: contentItem.childrenRect.height + main_column.anchors.topMargin*2
+        anchors.rightMargin: 0
+        anchors.leftMargin: 0
+        flickableDirection: Flickable.VerticalFlick
+        onContentYChanged: {
 
-
-        Text {
-            id: text1
-            x: 68
-            y: 55
-            color: "#dbdbf0"
-            text: qsTr("Pinned Apps")
-            font.pixelSize: 24
+         //flickable.verticalOvershoot != 0 ? true : flickable.verticalVelocity >0 ?
+           //                                     (production_bar.state == "hidden" ? true : production_bar.state ="default") :true
         }
 
-        Text {
-            id: text2
-            x: 87
-            y: 446
-            color: "#dbdbf0"
-            text: qsTr("All Apps")
-            font.pixelSize: 24
-        }
-        Row{
-            x: 164
-            y: 125
+    ColumnLayout {
+        id: main_column
+        width: 1232
+        anchors.horizontalCenter: parent.horizontalCenter
+//        anchors.left: parent.left
+//        anchors.right: parent.right
+        anchors.top: parent.top
+
+        //anchors.horizontalCenter:  parent.horizontalCenter
+        anchors.rightMargin: 64
+        anchors.leftMargin: 64
+        anchors.topMargin: 64
+        spacing: 80
+
+
+        Column {
+            id: pinned_apps_column
+            Layout.fillWidth: true
             spacing: 24
-        AppCard {
-            id: appCard
+            Row {
+                spacing: 8
+                Text {
+                    id: pinned_apps_icon
+                    anchors.verticalCenter: parent.verticalCenter
+                    color: Style.green
+                    text: qsTr("\uf68d") //pin icon
+                    font.pixelSize: 24
+                    font.family: Style.iconFonts
+                }
+                Text {
+                    id: pinned_apps_text
+                    color: Style.text_color
+                    text: qsTr("Pinned Apps")
+                    font.pixelSize: 24
+                }
+            }
+            Item {
+                id: pinned_apps
+                height: childrenRect.height
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.rightMargin: 0
+                anchors.leftMargin: 0
+
+                RowLayout {
+                    id: pinned_apps_row
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.rightMargin: 0
+                    anchors.leftMargin: 0
+                    spacing: 20
+                    Repeater {
+                        model: 4
+
+                        AppCard {
+                            id: appCard
+                        }
+                    }
+                }
+            }
+        }
+
+            Column {
+                id: all_apps_column
+                Layout.fillWidth: true
+                spacing: 24
+                Row {
+                    spacing: 8
+                    Text {
+                        id: all_apps_icon
+                        anchors.verticalCenter: parent.verticalCenter
+                        color: "#5721C9"
+                        text: qsTr("\uf1f5") //category-2 icon
+                        font.pixelSize: 24
+                        font.family: Style.iconFonts
+                    }
+                    Text {
+                        id: all_apps_text
+                        color: Style.text_color
+                        text: qsTr("All Apps")
+                        font.pixelSize: 24
+                    }
+                }
+                Item {
+                    id: all_apps
+                    height: childrenRect.height
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.rightMargin: 0
+                    anchors.leftMargin: 0
+
+                    Flow {
+                        id: all_apps_layout
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+                        anchors.rightMargin: 0
+                        anchors.leftMargin: 0
+                        spacing: 32
+                        Repeater {
+                            id: all_apps_repeater
+                            model: 50
+
+                            AppCard {
+                                id: all_apps_AppCard
+                            }
+                        }
+                    }
+                }
+
+
+            }
 
         }
-        AppCard {
-            id: appCard1
-
-        }
-}
     }
 
-}
+    ProductionBar{
+        id: production_bar
+        y : 36
+        anchors.horizontalCenter: parent.horizontalCenter
+
+    }
+    }
 
 /*##^##
 Designer {
