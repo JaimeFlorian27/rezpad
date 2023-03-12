@@ -1,4 +1,3 @@
-import PIL
 
 
 class App:
@@ -13,7 +12,7 @@ class App:
         self.version : str = version
         self._tool_name : str #name of the binary that executes the app 
         
-    def execute():
+    def execute(self):
         pass
     
       
@@ -24,10 +23,10 @@ class AppCardController():
         self.app : App = app
         
     
-    def query_logo_path() -> str:
+    def query_logo_path(self) -> str:
         #logo_path
         pass
     
-    def _calculate_gradient_color():
+    def _calculate_gradient_color(self):
         pass
     
