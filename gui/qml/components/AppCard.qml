@@ -1,6 +1,10 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.15
 Item {
+
+    property string app_name : "Blender"
+    property string app_version : "3.4.2"
+    property string app_icon_path : "../../resources/blender_logo.png"
     id: app_card
     width: 280
     height: 200
@@ -80,7 +84,7 @@ Item {
      gradient: Gradient{
 
          stops:[
-         GradientStop { position: 1; color: "#e87500" },
+         GradientStop { position: 1; color : bg_image.source.pixel(1500, 1500) },
              GradientStop { position: 0; color: "#00000000" }
          ]
      }
