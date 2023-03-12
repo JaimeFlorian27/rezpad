@@ -1,4 +1,5 @@
 import sys
+import os
 
 
 def check_for_rez() -> bool:
@@ -15,6 +16,12 @@ def check_for_rez() -> bool:
         return False
         
 
-def register_rez(path_to_rez : str):
+def register_rez(path_to_rez : str) -> bool:
     # Add the path to the installed package
-    sys.path.append('/path/to/installed/package')
+        if os.path.exists(path_to_rez):
+            try:
+                sys.path.append(path_to_rez)
+                return True
+            except:
+                pass
+        return False
