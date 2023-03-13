@@ -1,0 +1,1 @@
+from mdkAppLauncher.models import App, production

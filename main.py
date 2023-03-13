@@ -6,6 +6,16 @@ import sys
 from PySide2.QtGui import QGuiApplication
 from PySide2.QtQml import QQmlApplicationEngine
 
+    """expected dataflow
+    
+    current_prod = production_bar.current
+    
+    for app in current_prod.apps:
+    
+    
+    
+    """
+
 
 if __name__ == "__main__":
     app : QGuiApplication = QGuiApplication(sys.argv)

@@ -10,8 +10,8 @@ log = logging.getLogger(__name__)
 
 class PILProcessor:
     
-    @classmethod
-    def get_average_color(cls,image_path: str) -> str:
+    @staticmethod
+    def get_average_color(image_path: str) -> str:
         """
         Returns the average color of the image in hexadecimal format.
 
@@ -29,7 +29,7 @@ class PILProcessor:
             image : Image = img.open(image_path)
             image = image.convert("RGB")
             
-            color : List  = ImageStat.Stat(image).mean
+            color : List[float]  = ImageStat.Stat(image).mean
             color = [int(channel) for channel in color]
             
             hex_color = f"#{color[0]:02x}{color[1]:02x}{color[2]:02x}"
