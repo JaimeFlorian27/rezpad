@@ -1,16 +1,27 @@
 from rez.resolved_context import ResolvedContext
+from typing import List
 
 
 class App:
 
-    def __init__(self, name: str, version: str, executable_path: str):
-        """
-        NOTE: Should App need to have the executable path? if we are going
-        """
-        self.name: str = name
+    def __init__(self, tool: str, version: str, packages: List[str]):
+        self.name: str = tool.capitalize()
+        self._tool: str = tool  # name of the binary that executes the app
         self.version: str = version
-        self._tool_name: str  # name of the binary that executes the app
+        self._tool_name: str
         self._resolved_context: ResolvedContext
 
     def execute(self):
         pass
+
+    def set_display_name(self):
+        ...
+
+    def add_package(self):
+        ...
+
+    def remove_package(self):
+        ...
+
+    def resolve_context(self):
+        ...
