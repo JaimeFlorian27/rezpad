@@ -84,7 +84,7 @@ Item {
      gradient: Gradient{
 
          stops:[
-         GradientStop { position: 1; color : bg_image.source.pixel(1500, 1500) },
+         GradientStop { position: 1; color : "#fc9003" },
              GradientStop { position: 0; color: "#00000000" }
          ]
      }
