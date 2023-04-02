@@ -1,22 +1,23 @@
 import QtQuick 2.15
+import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
-Item {
+Button {
 
     property string app_name : "Blender"
     property string app_version : "3.4.2"
     property string app_icon_path : "../../resources/blender_logo.png"
     id: app_card
-    width: 280
-    height: 200
+    implicitWidth: 280
+    implicitHeight: 200
     states: [
      State {
-        name: "pressed"; when: mouseArea.containsPress
+        name: "pressed"; when: app_card.pressed
         PropertyChanges {target: app_card; scale: 1.05;}
         PropertyChanges {target: gradient_rect; opacity: 0.2;}
 
         },
       State {
-         name: "hovered"; when: mouseArea.containsMouse
+         name: "hovered"; when: app_card.hovered || app_card.visualFocus
          PropertyChanges {target: app_card; scale: 1.1;}
          PropertyChanges {target: gradient_rect; opacity: 0.3;}
 
@@ -56,7 +57,7 @@ Item {
      ]
 
 
- Rectangle{
+ background: Rectangle{
      anchors.fill:parent
      color: "#1A1B24"
      radius: 16
@@ -82,9 +83,8 @@ Item {
      border.color: "#232535"
      opacity:0.05
      gradient: Gradient{
-
          stops:[
-         GradientStop { position: 1; color : "#fc9003" },
+         GradientStop { position: 1; color : Qt.rgba(Math.random(), Math.random(), Math.random(), 1) },
              GradientStop { position: 0; color: "#00000000" }
          ]
      }
@@ -113,20 +113,12 @@ ColumnLayout {
             color: "#dbdbf0"
             text: app_name
             font.pixelSize: 40
-            wrapMode: Text.WordWrap
+            wrapMode: Text.Wrap
             horizontalAlignment: Text.AlignHCenter
             elide: Text.ElideRight
             maximumLineCount : 2
-
+            
             Component.onCompleted: {width = contentWidth}
-
-            Rectangle{
-                anchors.centerIn : parent
-                width: parent.contentWidth
-                height: parent.contentHeight
-                color : "#11ed3d15"
-
-            }
 
         }
     }
@@ -141,11 +133,11 @@ ColumnLayout {
     }
 }
 
- MouseArea{
-     id: mouseArea
-     anchors.fill: parent
-     hoverEnabled: true
- }
+//  MouseArea{
+//      id: mouseArea
+//      anchors.fill: parent
+//      hoverEnabled: true
+//  }
 
 }
 

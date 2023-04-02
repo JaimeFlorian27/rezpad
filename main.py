@@ -62,10 +62,11 @@ class Bridge(QObject):
 
 
 if __name__ == "__main__":
+    bridge: Bridge = Bridge()
+    
     app: QGuiApplication = QGuiApplication(sys.argv)
     engine: QQmlApplicationEngine = QQmlApplicationEngine()
 
-    bridge: Bridge = Bridge()
     context = engine.rootContext()
     context.setContextProperty("data_bridge", bridge)
 
@@ -76,5 +77,5 @@ if __name__ == "__main__":
     engine.load(main_qml_path)
     if not engine.rootObjects():
         sys.exit(-1)
-
+    app.aboutToQuit.connect(engine.deleteLater)
     sys.exit(app.exec_())

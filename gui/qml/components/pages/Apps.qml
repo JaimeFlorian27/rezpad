@@ -23,20 +23,15 @@ Page {
         anchors.leftMargin: 0
         flickableDirection: Flickable.VerticalFlick
         onContentYChanged: {
-
-         //flickable.verticalOvershoot != 0 ? true : flickable.verticalVelocity >0 ?
-           //                                     (production_bar.state == "hidden" ? true : production_bar.state ="default") :true
+            //flickable.verticalOvershoot != 0 ? true : flickable.verticalVelocity >0 ?
+            //(production_bar.state == "hidden" ? true : production_bar.state ="default") :true
         }
 
     ColumnLayout {
         id: main_column
         width: 1232
         anchors.horizontalCenter: parent.horizontalCenter
-//        anchors.left: parent.left
-//        anchors.right: parent.right
         anchors.top: parent.top
-
-        //anchors.horizontalCenter:  parent.horizontalCenter
         anchors.rightMargin: 64
         anchors.leftMargin: 64
         anchors.topMargin: 64
@@ -46,6 +41,7 @@ Page {
         Column {
             id: pinned_apps_column
             Layout.fillWidth: true
+            height: contentHeight
             spacing: 24
             Row {
                 spacing: 8
@@ -64,30 +60,23 @@ Page {
                     font.pixelSize: 24
                 }
             }
-            Item {
-                id: pinned_apps
-                height: childrenRect.height
+            RowLayout{
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.rightMargin: 0
                 anchors.leftMargin: 0
-
-                RowLayout {
-                    id: pinned_apps_row
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    anchors.rightMargin: 0
-                    anchors.leftMargin: 0
-                    spacing: 20
-                    Repeater {
-                        model: 4
-
-                        AppCard {
-                            id: appCard
-                        }
+                Repeater{
+                    Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                    model: 4
+                    AppCard {
+                        id: appCard
+                        Layout.fillWidth: true
+                        Layout.maximumWidth: implicitWidth
                     }
                 }
+
             }
+
         }
 
             Column {
