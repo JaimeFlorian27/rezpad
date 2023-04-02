@@ -128,10 +128,11 @@ Page {
                         spacing: 32
                         Repeater {
                             id: all_apps_repeater
-                            model: 50
+                            model: data_bridge.fruits || []
 
                             AppCard {
                                 id: all_apps_AppCard
+                                app_name: modelData
                             }
                         }
                     }
@@ -147,6 +148,7 @@ Page {
         id: production_bar
         y : 36
         anchors.horizontalCenter: parent.horizontalCenter
+        onClicked: {this.y == data_bridge.get_test_scale(); console.log(data_bridge.get_test_scale())}
 
     }
     }

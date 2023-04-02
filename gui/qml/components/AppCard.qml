@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.15
 import QtQuick.Layouts 1.15
 Item {
 
@@ -91,35 +91,55 @@ Item {
  }
 
 
- Column {
-     id: columnLayout
-     anchors.centerIn: parent
-     Row{
-         id: row
-         spacing: 4
-         Image {
-             id: name
-             anchors.verticalCenter: parent.verticalCenter
-         source: "../../resources/blender_logo.png"
-         sourceSize.height: 40
-         sourceSize.width: 40
-         asynchronous: true
-     }
-     Text {
-         id: app_name
-         color: "#dbdbf0"
-         text: qsTr("Blender")
-         font.pixelSize: 40     }
-     }
-     Text {
-         id: app_version
-         color: "#dbdbf0"
-         text: qsTr("3.4.2")
-         font.pixelSize: 20
-         horizontalAlignment: Text.AlignHCenter
-         anchors.horizontalCenter: parent.horizontalCenter
-     }
- }
+ColumnLayout {
+    id: columnLayout
+    anchors.centerIn: parent
+    anchors.horizontalCenter: parent.horizontalCenter
+    Row{
+        id: row
+        spacing: 4
+        Component.onCompleted: {width = childrenRect.width}
+        Image {
+            id: icon
+            anchors.verticalCenter: parent.verticalCenter
+            source: "../../resources/blender_logo.png"
+            sourceSize.height: 40
+            sourceSize.width: 40
+            asynchronous: true
+        }
+        Text {
+            width: 200
+            id: app_name_text
+            color: "#dbdbf0"
+            text: app_name
+            font.pixelSize: 40
+            wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignHCenter
+            elide: Text.ElideRight
+            maximumLineCount : 2
+
+            Component.onCompleted: {width = contentWidth}
+
+            Rectangle{
+                anchors.centerIn : parent
+                width: parent.contentWidth
+                height: parent.contentHeight
+                color : "#11ed3d15"
+
+            }
+
+        }
+    }
+
+    Text {
+        id: app_version
+        color: "#dbdbf0"
+        text: qsTr("3.4.2")
+        font.pixelSize: 20
+        Layout.alignment: Qt.AlignHCenter
+        horizontalAlignment: Text.AlignHCenter
+    }
+}
 
  MouseArea{
      id: mouseArea
