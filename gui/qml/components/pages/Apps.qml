@@ -14,6 +14,7 @@ Page {
         anchors.fill: parent
         color: Style.bg_color
     }
+        
     Flickable{
         id: flickable
         anchors.fill: parent
@@ -137,10 +138,23 @@ Page {
         id: production_bar
         y : 36
         anchors.horizontalCenter: parent.horizontalCenter
-        onClicked: {this.y == data_bridge.get_test_scale(); console.log(data_bridge.get_test_scale())}
+        production_name : data_bridge.default_production.get('name')
+            
+        signal retrieved_production_qml(var data)
 
+        // Signal argument names are not propagated from Python to QML,
+        // so we need to re-emit the signal
+        Component.onCompleted: {
+            data_bridge.retrieved_productions.connect(retrieved_production_qml)
+            data_bridge.default_production()
+        }
+
+        onRetrieved_production_qml: {
+            console.log('onReDataRetrieved on the QML Side')
+            production_name = data["name"]
+        }
     }
-    }
+}
 
 /*##^##
 Designer {

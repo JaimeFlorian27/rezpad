@@ -6,6 +6,7 @@ Button {
     property string app_name : "Blender"
     property string app_version : "3.4.2"
     property string app_icon_path : "../../resources/blender_logo.png"
+    property color gradient_color : "#fca103"
     id: app_card
     implicitWidth: 280
     implicitHeight: 200
@@ -84,7 +85,7 @@ Button {
      opacity:0.05
      gradient: Gradient{
          stops:[
-         GradientStop { position: 1; color : Qt.rgba(Math.random(), Math.random(), Math.random(), 1) },
+         GradientStop { position: 1; color : gradient_color },
              GradientStop { position: 0; color: "#00000000" }
          ]
      }
