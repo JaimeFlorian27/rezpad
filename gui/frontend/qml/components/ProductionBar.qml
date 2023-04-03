@@ -4,9 +4,10 @@ import "../style"
 import QtGraphicalEffects 1.15
 
 Button {
+    property string production_name : "Minecraft, the musical"
     id: production_bar
-   height: childrenRect.height
-   width: childrenRect.width
+    height: childrenRect.height
+    width: text_layout.width
 
    states:
     [
@@ -95,37 +96,41 @@ Button {
 ]
 
 
-    background: Rectangle
-    {
-        id: bg
+    background: Item{
         anchors.fill: parent
-        border.color: "#232535"
-        border.width: 1
-        color: "#191B26"
-        radius: height/2
-    }
-    DropShadow {
-            id: shadow
-            anchors.fill: bg
-            horizontalOffset: 0
-            verticalOffset: 3
-            radius: 4.0
-            samples: 17
-            color: "#40000000"
-            source: bg
-            cached: true
+
+        Rectangle
+        {
+            id: bg
+            anchors.fill: parent
+            border.color: "#232535"
+            border.width: 1
+            color: "#191B26"
+            radius: height/2
         }
+        DropShadow {
+                id: shadow
+                anchors.fill: bg
+                horizontalOffset: 0
+                verticalOffset: 3
+                radius: 4.0
+                samples: 17
+                color: "#40000000"
+                source: bg
+                cached: true
+            }
 
-    Rectangle
-    {
-        id: bg_gradient
-        opacity: 0.2
-        anchors.fill: text_layout
-        radius: height/2
-        gradient: Gradient{
+        Rectangle
+        {
+            id: bg_gradient
+            opacity: 0.2
+            anchors.fill: text_layout
+            radius: height/2
+            gradient: Gradient{
 
-            GradientStop{color: "#000000"; position: 0}
-            GradientStop{color: "#23253500"; position: 1 }
+                GradientStop{color: "#000000"; position: 0}
+                GradientStop{color: "#23253500"; position: 1 }
+            }
         }
     }
 
@@ -146,7 +151,7 @@ Button {
         }
         Text {
             id: production_name_text
-            text: qsTr("Minecraft, The musical")
+            text: production_name
             anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 16
             color: Style.text_color
