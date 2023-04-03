@@ -7,7 +7,6 @@ from .gui.backend import Bridge
 
 from PySide2.QtGui import QGuiApplication
 from PySide2.QtQml import QQmlApplicationEngine
-from PySide2.QtCore import QObject, Slot, Property, Signal
 
 
 def main() -> None:
