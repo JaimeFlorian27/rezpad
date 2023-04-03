@@ -65,9 +65,12 @@ Thumbs.db
 
 # Python byte code
 *.pyc
+venv
 
 # Binaries
 # --------
 *.dll
 *.exe
 
+# Qt/Qml
+*.*.user
