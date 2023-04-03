@@ -1,5 +1,5 @@
 from typing import Dict
-from ..models import App
+from . import App
 
 from PySide2.QtCore import QObject
 

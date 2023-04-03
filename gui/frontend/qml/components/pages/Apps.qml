@@ -118,7 +118,7 @@ Page {
                         spacing: 32
                         Repeater {
                             id: all_apps_repeater
-                            model: data_bridge.fruits || []
+                            model: []
 
                             AppCard {
                                 id: all_apps_AppCard
@@ -151,7 +151,7 @@ Page {
 
         onRetrieved_production_qml: {
             console.log('onReDataRetrieved on the QML Side')
-            production_name = data["name"]
+            production_name = data["apps"].get
         }
     }
 }
